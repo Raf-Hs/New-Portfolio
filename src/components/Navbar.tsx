@@ -20,10 +20,11 @@ export default async function Navbar({ lang }: { lang: string }) {
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
-        <Link href={`/${current}`} className="font-semibold tracking-tight">
-          Portfolio
-        </Link>
+     <div className="mx-auto max-w-5xl px-4 py-4">
+    <div className="glass rounded-full px-5 py-3 flex items-center justify-between border border-white/10">
+        <Link href={`/${current}`} className="font-semibold tracking-tight text-white">
+  Portfolio
+</Link>
 
         <nav className="flex items-center gap-4 text-sm">
           {items.map((i) => (
@@ -33,6 +34,7 @@ export default async function Navbar({ lang }: { lang: string }) {
           ))}
           <LangSwitch lang={current} />
         </nav>
+      </div>
       </div>
     </header>
   );

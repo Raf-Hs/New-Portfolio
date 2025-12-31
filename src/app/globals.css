@@ -1,36 +1,184 @@
 @import "tailwindcss";
 
-:root {
-  --bg: #0a0a0a;
-  --fg: #ededed;
-  --muted: rgba(237,237,237,.65);
-  --border: rgba(237,237,237,.12);
-  --panel: rgba(237,237,237,.06);
+:root{
+  --bg:#050607;
+  --fg:#f2fff9;
+  --muted:rgba(242,255,249,.78);
+  --panel:rgba(7,10,10,.52);
+  --panel2:rgba(8,13,13,.68);
+  --border2:rgba(255,255,255,.14);
+
+  --glow:#39ffb6;
+  --glow2:#00b3a6;
+
+  --border:rgba(57,255,182,.18);
+  --border2:rgba(255,255,255,.10);
+
+  --shadow: 0 12px 48px rgba(0,0,0,.55);
+  --shadow2: 0 0 0 1px rgba(57,255,182,.12), 0 20px 70px rgba(0,0,0,.55);
+
+  --radius: 18px;
 }
 
-html, body {
-  height: 100%;
-}
-
-body {
+html, body { height:100%; }
+body{
+  
   background: var(--bg);
   color: var(--fg);
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  letter-spacing: .2px;
 }
 
-/* helpers SIN @apply */
-.card {
-  border: 1px solid var(--border);
-  background: var(--panel);
-  border-radius: 1.25rem;
-  padding: 1.25rem;
+/* Fondo: imagen + viñeta + neblina */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2; /* 👈 CLAVE */
+  background:
+    radial-gradient(900px 600px at 50% 30%, rgba(57,255,182,.14), transparent 62%),
+    radial-gradient(1200px 900px at 50% 110%, rgba(0,179,166,.14), transparent 60%),
+    linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.28)),
+    url("/lovecraft-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: saturate(1.1) contrast(1.08) brightness(1.08);
 }
 
-.chip {
-  border: 1px solid var(--border);
-  background: var(--panel);
+
+/* Ruido (opcional) */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1; /* 👈 CLAVE */
+  background-image: url("/noise.png");
+  background-size: 300px 300px;
+  opacity: .05;
+  mix-blend-mode: overlay;
+}
+
+::selection{ background: rgba(57,255,182,.25); }
+
+/* Links */
+a{ color: rgba(232,246,241,.92); text-decoration-color: rgba(57,255,182,.35); }
+a:hover{ color:#fff; text-decoration-color: rgba(57,255,182,.75); }
+
+/* Layout helpers */
+.container-page{
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Lovecraft UI atoms */
+.glass{
+  background: linear-gradient(180deg, rgba(7,10,10,.66), rgba(7,10,10,.50));
+  border: 1px solid var(--border2);
+  backdrop-filter: blur(10px);
+}
+
+.card{
+  border: 1px solid var(--border2);
+  background: linear-gradient(180deg, rgba(10,16,16,.62), rgba(7,10,10,.40));
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.card:hover{
+  border-color: rgba(57,255,182,.24);
+  box-shadow: var(--shadow2);
+}
+
+/* “Runas” en borde (sutil) */
+.card::before{
+  content:"";
+  display:block;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(57,255,182,.35), transparent);
+  margin-bottom: 14px;
+  opacity:.65;
+}
+
+.chip{
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  border: 1px solid rgba(57,255,182,.22);
+  background: rgba(7,10,10,.55);
   border-radius: 9999px;
-  padding: .25rem .75rem;
+  padding: .28rem .78rem;
   font-size: .75rem;
-  color: var(--muted);
+  color: rgba(232,246,241,.78);
+}
+.chip::before{
+  content:"";
+  width:6px;
+  height:6px;
+  border-radius:999px;
+  background: rgba(57,255,182,.7);
+  box-shadow: 0 0 10px rgba(57,255,182,.45);
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius: 9999px;
+  padding: .62rem 1.1rem;
+  font-size: .9rem;
+  font-weight: 650;
+  letter-spacing: .2px;
+  transition: transform 120ms, background 120ms, border-color 120ms, box-shadow 120ms;
+  user-select:none;
+}
+
+.btn-solid{
+  color: #03110d;
+  background: radial-gradient(120% 120% at 30% 30%, rgba(57,255,182,1), rgba(0,179,166,1));
+  box-shadow: 0 10px 30px rgba(0,179,166,.22), 0 0 0 1px rgba(57,255,182,.20);
+}
+.btn-solid:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 14px 40px rgba(0,179,166,.28), 0 0 0 1px rgba(57,255,182,.28);
+}
+
+.btn-ghost{
+  color: rgba(232,246,241,.92);
+  border: 1px solid rgba(57,255,182,.22);
+  background: rgba(7,10,10,.35);
+}
+.btn-ghost:hover{
+  transform: translateY(-1px);
+  border-color: rgba(57,255,182,.35);
+  background: rgba(7,10,10,.48);
+}
+
+/* Titles */
+.h1{
+  font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+  font-weight: 750;
+  letter-spacing: -0.6px;
+  text-shadow: 0 0 18px rgba(57,255,182,.18);
+}
+.h2{
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.p-muted{ color: rgba(242,255,249,.72); }
+
+/* Inputs (para futuro) */
+input, textarea, select{
+  border: 1px solid rgba(57,255,182,.18);
+  background: rgba(7,10,10,.45);
+  color: var(--fg);
+  border-radius: 14px;
+  padding: .6rem .8rem;
+  outline:none;
+}
+input:focus, textarea:focus, select:focus{
+  border-color: rgba(57,255,182,.35);
+  box-shadow: 0 0 0 4px rgba(57,255,182,.10);
 }

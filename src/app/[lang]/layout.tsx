@@ -13,7 +13,7 @@ export default function LangLayout({
     <html lang={params.lang}>
       <body className="min-h-screen">
         <Navbar lang={params.lang as any} />
-        <main className="mx-auto w-full max-w-5xl px-4 py-12">{children}</main>
+        <main className="relative z-10 mx-auto w-full max-w-5xl px-4 py-12">{children}</main>
         <Footer />
       </body>
     </html>

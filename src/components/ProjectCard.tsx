@@ -4,7 +4,7 @@ import type { Locale } from "@/i18n/config";
 
 export default function ProjectCard({ p, lang }: { p: Project; lang: Locale }) {
   return (
-    <article className="card">
+    <article className="card p-5">
       <div className="flex items-start justify-between gap-4">
         <div>
           <h3 className="text-lg font-semibold">{p.title}</h3>
