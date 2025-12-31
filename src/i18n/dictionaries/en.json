@@ -1,0 +1,16 @@
+{
+  "nav": { "home": "Home", "projects": "Projects", "about": "About", "contact": "Contact" },
+  "home": {
+    "title": "Rafael Hernández Silva",
+    "role": "Full-Stack Developer",
+    "tagline": "TypeScript • React • Node.js • Next.js • Prisma • Postgres",
+    "desc": "End-to-end portfolio: solid frontend, functional backend, real deployment, and production evidence.",
+    "btnProjects": "View projects",
+    "btnGithub": "GitHub",
+    "featured": "Featured projects",
+    "seeAll": "View all"
+  },
+  "projects": { "title": "Projects", "desc": "End-to-end: frontend, backend, real deployment, production evidence.", "detail": "View details" },
+  "about": { "title": "About" },
+  "contact": { "title": "Contact" }
+}
