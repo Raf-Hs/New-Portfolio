@@ -1,5 +1,6 @@
 import { getDictionary } from "@/i18n/get-dictionary";
 import { site } from "@/lib/site";
+import { profile } from "@/content/profile";
 
 export default async function Contact({
   params,
@@ -10,35 +11,31 @@ export default async function Contact({
   const t = await getDictionary(lang);
 
   return (
-    <div className="space-y-4">
-      <h1 className="text-3xl font-semibold tracking-tight">
-        {t.contact.title}
-      </h1>
+    <div className="space-y-6">
+      <h1 className="text-3xl font-semibold tracking-tight">{t.contact.title}</h1>
 
-      <div className="space-y-2 text-white/70">
-        <a className="underline" href={site.socials.email}>
-          Email
-        </a>
-
+      <div className="card p-5 space-y-3 text-white/75">
         <div>
-          <a
-            className="underline"
-            href={site.socials.github}
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub
-          </a>
+          <span className="text-white/55">{t.contact.location}: </span>
+          {profile.location}
         </div>
 
         <div>
-          <a
-            className="underline"
-            href={site.socials.linkedin}
-            target="_blank"
-            rel="noreferrer"
-          >
-            LinkedIn
+          <span className="text-white/55">{t.contact.email}: </span>
+          <a className="underline" href={site.socials.email}>
+            {site.socials.email.replace("mailto:", "")}
+          </a>
+        </div>
+
+        <div className="flex flex-wrap gap-3 text-sm">
+          <a className="btn btn-ghost" href={site.socials.github} target="_blank" rel="noreferrer">
+            {t.contact.github}
+          </a>
+          <a className="btn btn-ghost" href={site.socials.linkedin} target="_blank" rel="noreferrer">
+            {t.contact.linkedin}
+          </a>
+          <a className="btn btn-ghost" href={site.socials.x} target="_blank" rel="noreferrer">
+            {t.contact.x}
           </a>
         </div>
       </div>

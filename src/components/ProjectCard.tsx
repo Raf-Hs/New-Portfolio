@@ -1,8 +1,16 @@
 import Link from "next/link";
 import type { Project } from "@/content/projects";
-import type { Locale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/get-dictionary";
 
-export default function ProjectCard({ p, lang }: { p: Project; lang: Locale }) {
+export default async function ProjectCard({
+  p,
+  lang,
+}: {
+  p: Project;
+  lang: string;
+}) {
+  const t = await getDictionary(lang);
+
   return (
     <article className="card p-5">
       <div className="flex items-start justify-between gap-4">
@@ -21,8 +29,24 @@ export default function ProjectCard({ p, lang }: { p: Project; lang: Locale }) {
 
       <div className="mt-4 flex flex-wrap gap-3 text-sm">
         <Link href={`/${lang}/projects/${p.slug}`} className="font-medium underline">
-          Ver detalle
+          {t.projects.detail}
         </Link>
+
+        {p.links.demo && (
+          <a className="underline text-white/70" href={p.links.demo} target="_blank" rel="noreferrer">
+            Demo
+          </a>
+        )}
+        {p.links.repo && (
+          <a className="underline text-white/70" href={p.links.repo} target="_blank" rel="noreferrer">
+            Repo
+          </a>
+        )}
+        {p.links.logs && (
+          <a className="underline text-white/70" href={p.links.logs} target="_blank" rel="noreferrer">
+            Logs
+          </a>
+        )}
       </div>
     </article>
   );
