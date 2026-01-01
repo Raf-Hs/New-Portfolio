@@ -1,51 +1,14 @@
-import "server-only";
-import { defaultLocale, isLocale, type Locale } from "./config";
+import type es from "./dictionaries/es.json";
 
-export type Dictionary = {
-  nav: { home: string; projects: string; about: string; contact: string };
-  home: {
-    title: string;
-    role: string;
-    tagline: string;
-    desc: string;
-    btnProjects: string;
-    btnPrimaryLink: string;
-    featured: string;
-    seeAll: string;
-  };
-  projects: {
-    title: string;
-    desc: string;
-    detail: string;
-    links: string;
-    highlights: string;
-  };
-  about: {
-    title: string;
-    headline: string;
-    stackTitle: string;
-    experienceTitle: string;
-    educationTitle: string;
-    languagesTitle: string;
-    certsTitle: string;
-  };
-  contact: {
-    title: string;
-    location: string;
-    email: string;
-    github: string;
-    linkedin: string;
-    x: string;
-  };
-};
+export type Dictionary = typeof es;
+
+type Locale = "es" | "en";
 
 const dictionaries: Record<Locale, () => Promise<Dictionary>> = {
-  es: async () => (await import("./dictionaries/es.json")).default as Dictionary,
-  en: async () => (await import("./dictionaries/en.json")).default as Dictionary,
+  es: async () => (await import("./dictionaries/es.json")).default,
+  en: async () => (await import("./dictionaries/en.json")).default,
 };
 
-export async function getDictionary(lang: string): Promise<Dictionary> {
-  const normalized = String(lang ?? "").toLowerCase().split("/")[0];
-  const locale: Locale = isLocale(normalized) ? normalized : defaultLocale;
+export async function getDictionary(locale: Locale) {
   return dictionaries[locale]();
 }
