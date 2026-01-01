@@ -14,7 +14,6 @@
 
   "projects": {
     "title": "Proyectos",
-    "desc": "Casos end-to-end con README, demo y evidencia.",
     "detail": "Ver detalle",
     "links": "Links",
     "highlights": "Highlights"
@@ -22,7 +21,6 @@
 
   "about": {
     "title": "Sobre mí",
-    "headline": "Full-Stack con enfoque en entregas reales, calidad y producto.",
     "stackTitle": "Stack principal",
     "experienceTitle": "Experiencia",
     "educationTitle": "Educación",

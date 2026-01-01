@@ -5,6 +5,7 @@ import { profile } from "@/content/profile";
 import { projects } from "@/content/projects";
 import ProjectCard from "@/components/ProjectCard";
 import Hero from "@/components/Hero";
+import Image from "next/image";
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -29,19 +30,6 @@ export default async function Home({
         desc={t.home.desc}
         ctaPrimary={t.home.btnProjects}
       />
-
-      {/* PROJECTS */}
-      <section id="projects" className="scroll-mt-28 space-y-4">
-        <h2 className="h2">{t.projects.title}</h2>
-        <p className="p-muted">{t.projects.desc}</p>
-
-        <div className="grid gap-4 md:grid-cols-2">
-          {projects.map((p) => (
-            <ProjectCard key={p.slug} p={p} lang={lang} />
-          ))}
-        </div>
-      </section>
-
       {/* ABOUT */}
       <section id="about" className="scroll-mt-28 space-y-6">
         <h2 className="h2">{t.about.title}</h2>
@@ -59,20 +47,42 @@ export default async function Home({
 
 
   {/* IDIOMAS */}
-  <div className="card p-5">
-    <div className="text-sm font-semibold">{t.about.languagesTitle}</div>
+<div className="card p-5">
+  <div className="text-sm font-semibold">{t.about.languagesTitle}</div>
 
-    <ul className="mt-3 space-y-2 text-white/70">
-      {profile.languages.map((l) => (
-        <li key={l.name} className="flex justify-between">
-          <span className="font-semibold text-white">{l.name}</span>
+  <ul className="mt-3 space-y-2 text-white/70">
+    {profile.languages.map((l) => {
+      const flag =
+        l.name === "Español"
+          ? "/usa-flag.svg"
+          : l.name === "English"
+          ? "/usa-flag.svg"
+          : l.name === "Korean"
+          ? "/South-Korea-flag.png"
+          : null;
+
+      return (
+        <li key={l.name} className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2">
+            {flag && (
+              <Image
+                src={flag}
+                alt={l.name}
+                width={18}
+                height={18}
+                className="object-contain"
+              />
+            )}
+            <span className="font-semibold text-white">{l.name}</span>
+          </div>
+
           <span className="text-white/55">{l.level}</span>
         </li>
-      ))}
-    </ul>
-  </div>
+      );
+    })}
+  </ul>
 </div>
-
+</div>
         <div className="space-y-4">
           <div className="text-sm font-semibold">{t.about.experienceTitle}</div>
           <section id="experience" className="scroll-mt-28 space-y-4">
@@ -107,6 +117,22 @@ export default async function Home({
   </div>
 </section>
         </div>
+
+      {/* PROJECTS */}
+      <section id="projects" className="scroll-mt-28 space-y-4">
+        <h2 className="h2">{t.projects.title}</h2>
+        <p className="p-muted">{t.projects.desc}</p>
+
+        <div className="grid gap-4 md:grid-cols-2">
+          {projects.map((p) => (
+            <ProjectCard key={p.slug} p={p} lang={lang} />
+          ))}
+        </div>
+      </section>
+
+
+
+
 
         <div className="grid gap-4 md:grid-cols-2">
 

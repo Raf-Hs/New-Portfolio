@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getDictionary } from "@/i18n/get-dictionary";
 import LangSwitch from "@/components/LangSwitch";
 import { site } from "@/lib/site";
+import Image from "next/image";
 
 function normalizeLang(x: string) {
   const v = String(x ?? "").toLowerCase();
@@ -15,10 +16,9 @@ export default async function Navbar({ lang }: { lang: string }) {
 
   const items = [
     { id: "home", label: t.nav.home },
-    { id: "projects", label: t.nav.projects },
     { id: "about", label: t.nav.about },
     { id: "experience", label: current === "en" ? "Experience" : "Experiencia" },
-    { id: "contact", label: t.nav.contact },
+    { id: "projects", label: t.nav.projects },
   ];
 
   return (
@@ -27,14 +27,22 @@ export default async function Navbar({ lang }: { lang: string }) {
         <div className="glass rounded-full border border-white/10 px-5 py-3 flex items-center justify-between">
           {/* left: identity */}
           <Link href={`/${current}#home`} className="flex items-center gap-3">
-            <div className="h-8 w-8 rounded-full border border-white/10 bg-black/30 grid place-items-center text-xs text-white/70">
-              RH
-            </div>
-            <div className="leading-tight hidden sm:block">
-              <div className="text-sm font-semibold text-white">{site.name}</div>
-              <div className="text-xs text-white/55">{site.role}</div>
-            </div>
-          </Link>
+          <div className="h-8 w-8 rounded-full border border-white/10 bg-black/30 overflow-hidden">
+            <Image
+              src="/avatar.jpg"
+              alt="Avatar"
+              width={32}
+              height={32}
+              className="h-full w-full object-cover"
+              priority
+            />
+          </div>
+
+          <div className="leading-tight hidden sm:block">
+            <div className="text-sm font-semibold text-white">{site.name}</div>
+            <div className="text-xs text-white/55">{site.role}</div>
+          </div>
+        </Link>
 
           {/* center: nav */}
           <nav className="hidden md:flex items-center gap-5 text-xs text-white/70">

@@ -44,12 +44,36 @@ export default function Hero({
               {ctaPrimary}
             </Link>
 
-            <a className="btn btn-ghost" href={site.socials.linkedin} target="_blank" rel="noreferrer">
-              LinkedIn →
+            <a
+            className="btn btn-ghost flex items-center gap-2"
+            href={site.socials.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            >
+            <Image
+                src="/linkedin.svg"
+                alt="LinkedIn"
+                width={16}
+                height={16}
+                className="object-contain"
+            />
+            LinkedIn
             </a>
 
-            <a className="btn btn-ghost" href={site.socials.github} target="_blank" rel="noreferrer">
-              GitHub →
+            <a
+            className="btn btn-ghost flex items-center gap-2"
+            href={site.socials.github}
+            target="_blank"
+            rel="noreferrer"
+            >
+            <Image
+                src="/github.svg"
+                alt="GitHub"
+                width={16}
+                height={16}
+                className="object-contain"
+            />
+            GitHub
             </a>
 
                      <a
@@ -65,13 +89,13 @@ export default function Hero({
 
           {/* tech row */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3 opacity-95">
-            <TechIconPill label="TypeScript" icon="/icons/typescript.svg" />
-            <TechIconPill label="React" icon="/icons/react.svg" />
-            <TechIconPill label="Next.js" icon="/icons/nextjs.svg" />
-            <TechIconPill label="Node.js" icon="/icons/node.svg" />
-            <TechIconPill label="Prisma" icon="/icons/prisma.svg" />
-            <TechIconPill label="Postgres" icon="/icons/postgres.svg" />
-            <TechIconPill label="Docker" icon="/icons/docker.svg" />
+                <TechIconPill label="TypeScript" icon="/Typescript.png" />
+                <TechIconPill label="React" icon="/React.png" />
+                <TechIconPill label="Next.js" icon="/next.svg" />
+                <TechIconPill label="Node.js" icon="/window.svg" />
+                <TechIconPill label="Prisma" icon="/prisma-svgrepo-com.svg" />
+                <TechIconPill label="Postgres" icon="/Postgresql.png" />
+                <TechIconPill label="Docker" icon="/docker.svg" />
             </div>
         </div>
       </div>
@@ -82,10 +106,13 @@ export default function Hero({
 function TechIconPill({ label, icon }: { label: string; icon: string }) {
   return (
     <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/30 px-3 py-1 text-xs text-white/75">
-      <span className="relative h-4 w-4">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={icon} alt={label} className="h-4 w-4" />
-      </span>
+      <Image
+        src={icon}
+        alt={label}
+        width={16}
+        height={16}
+        className="object-contain"
+      />
       {label}
     </span>
   );
