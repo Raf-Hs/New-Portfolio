@@ -1,5 +1,4 @@
 export const profile = {
-  location: "Santiago de Querétaro, Querétaro, México",
 
   stack: [
     "TypeScript",
@@ -53,9 +52,9 @@ export const profile = {
   ],
 
   education: {
-    es: "Ingeniería en Desarrollo y Gestión de Software — Universidad Tecnológica de Querétaro (2020 – último cuatrimestre)",
-    en: "B.Eng. in Software Development & Management — Universidad Tecnológica de Querétaro (2020 – final term)"
-  },
+  es: "Ingeniería en Desarrollo y Gestión de Software — Universidad Tecnológica de Querétaro (2020 – 2026)",
+  en: "Software Development and Management Engineering — Universidad Tecnológica de Querétaro (2020 – 2026)",
+},
 
   languages: [
     { name: "English", level: "C1 (Cambridge, Jun 17, 2020)" },

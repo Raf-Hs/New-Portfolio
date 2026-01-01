@@ -1,5 +1,5 @@
 {
-  "nav": { "home": "Home", "projects": "Projects", "about": "About", "contact": "Contact" },
+  "nav": { "home": "Home", "projects": "Projects", "about": "About", "contact": "Contact", "experience": "Experience" },
 
   "home": {
     "title": "Rafael Hernández Silva",

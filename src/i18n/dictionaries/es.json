@@ -1,5 +1,5 @@
 {
-  "nav": { "home": "Inicio", "projects": "Proyectos", "about": "Sobre mí", "contact": "Contacto" },
+  "nav": { "home": "Inicio", "projects": "Proyectos", "about": "Sobre mí","experience": "Experiencia" },
 
   "home": {
     "title": "Rafael Hernández Silva",
@@ -28,14 +28,5 @@
     "educationTitle": "Educación",
     "languagesTitle": "Idiomas",
     "certsTitle": "Certificaciones"
-  },
-
-  "contact": {
-    "title": "Contacto",
-    "location": "Ubicación",
-    "email": "Email",
-    "github": "GitHub",
-    "linkedin": "LinkedIn",
-    "x": "X / Twitter"
   }
 }

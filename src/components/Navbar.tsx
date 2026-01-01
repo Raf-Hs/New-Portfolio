@@ -1,6 +1,8 @@
+// src/components/Navbar.tsx
 import Link from "next/link";
 import { getDictionary } from "@/i18n/get-dictionary";
 import LangSwitch from "@/components/LangSwitch";
+import { site } from "@/lib/site";
 
 function normalizeLang(x: string) {
   const v = String(x ?? "").toLowerCase();
@@ -12,28 +14,45 @@ export default async function Navbar({ lang }: { lang: string }) {
   const t = await getDictionary(current);
 
   const items = [
-    { href: `/${current}#home`, label: t.nav.home },
-    { href: `/${current}#projects`, label: t.nav.projects },
-    { href: `/${current}#about`, label: t.nav.about },
-    { href: `/${current}#contact`, label: t.nav.contact },
+    { id: "home", label: t.nav.home },
+    { id: "projects", label: t.nav.projects },
+    { id: "about", label: t.nav.about },
+    { id: "experience", label: current === "en" ? "Experience" : "Experiencia" },
+    { id: "contact", label: t.nav.contact },
   ];
 
   return (
     <header className="sticky top-0 z-50">
       <div className="mx-auto max-w-5xl px-4 py-4">
-        <div className="glass rounded-full px-5 py-3 flex items-center justify-between border border-white/10">
-          <Link href={`/${current}#home`} className="font-semibold tracking-tight text-white">
-            Portfolio
+        <div className="glass rounded-full border border-white/10 px-5 py-3 flex items-center justify-between">
+          {/* left: identity */}
+          <Link href={`/${current}#home`} className="flex items-center gap-3">
+            <div className="h-8 w-8 rounded-full border border-white/10 bg-black/30 grid place-items-center text-xs text-white/70">
+              RH
+            </div>
+            <div className="leading-tight hidden sm:block">
+              <div className="text-sm font-semibold text-white">{site.name}</div>
+              <div className="text-xs text-white/55">{site.role}</div>
+            </div>
           </Link>
 
-          <nav className="flex items-center gap-4 text-sm">
+          {/* center: nav */}
+          <nav className="hidden md:flex items-center gap-5 text-xs text-white/70">
             {items.map((i) => (
-              <Link key={i.href} href={i.href} className="text-white/70 hover:text-white">
+              <Link
+                key={i.id}
+                href={`/${current}#${i.id}`}
+                className="hover:text-white transition-colors"
+              >
                 {i.label}
               </Link>
             ))}
-            <LangSwitch lang={current} />
           </nav>
+
+          {/* right: language */}
+          <div className="flex items-center gap-3">
+            <LangSwitch lang={current} />
+          </div>
         </div>
       </div>
     </header>
