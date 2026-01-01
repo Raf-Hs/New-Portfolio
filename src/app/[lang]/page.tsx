@@ -134,7 +134,7 @@ export default async function Home({
       {/* PROJECTS */}
       <section id="projects" className="scroll-mt-28 space-y-4">
         <h2 className="h2">{t.projects.title}</h2>
-        <p className="p-muted">{t.projects.desc}</p>
+        <p className="p-muted">{t.projects.detail}</p>
 
         <div className="grid gap-4 md:grid-cols-2">
           {projects.map((p) => (
