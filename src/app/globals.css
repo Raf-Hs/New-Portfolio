@@ -203,3 +203,11 @@ select:focus {
   border-color: rgba(57, 255, 182, 0.35);
   box-shadow: 0 0 0 4px rgba(57, 255, 182, 0.1);
 }
+/* Hide scrollbar but keep scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;     /* IE / Edge */
+  scrollbar-width: none;        /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;                /* Chrome / Safari */
+}

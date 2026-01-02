@@ -1,5 +1,5 @@
 {
-  "nav": { "home": "Inicio", "projects": "Proyectos", "about": "Sobre mí","experience": "Experiencia" },
+  "nav": { "home": "Inicio", "projects": "Proyectos", "about": "Sobre mí","experience": "Experiencia", "achievements": "Logros" },
 
   "home": {
     "title": "Rafael Hernández Silva",

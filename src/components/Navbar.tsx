@@ -19,6 +19,7 @@ export default async function Navbar({ lang }: { lang: string }) {
     { id: "about", label: t.nav.about },
     { id: "experience", label: current === "en" ? "Experience" : "Experiencia" },
     { id: "projects", label: t.nav.projects },
+    { id: "achievements", label: t.nav.achievements},
   ];
 
   return (
