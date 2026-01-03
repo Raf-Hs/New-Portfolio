@@ -259,7 +259,7 @@ export default async function Home({
 
         <div className="grid gap-4 md:grid-cols-2">
           {projects.map((p) => (
-            <ProjectCard key={p.slug} p={p} lang={lang} />
+            <ProjectCard key={p.slug} p={p} />
           ))}
         </div>
       </section>
